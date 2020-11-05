@@ -1,11 +1,10 @@
 package es.centroafuera.psp.ejemplosJava;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 interface Callback {
-    public void buscarHilo(String cad, int i);
+    public void buscarHilo(int i);
     public void proceso();
     public void finalizar();
 }
@@ -15,7 +14,7 @@ public class Principal implements Callback {
     final int TOTAL_HILOS = 100;
     int numIt = 0;
 
-    HashMap <Integer, ArrayList<String>> hilo = new HashMap<>();
+    ArrayList <Integer> hilo = new ArrayList<>();
 
     public Principal() {
         for (int j = 1; j <= TOTAL_HILOS; j++) {
@@ -26,30 +25,18 @@ public class Principal implements Callback {
     }
 
     @Override
-    public void buscarHilo(String cad, int i) {
+    public void buscarHilo(int i) {
         ArrayList<String> lista = new ArrayList<>();
-        if (hilo.containsKey(i)){
-            lista = new ArrayList<String>(hilo.get(i));
-            lista.add(cad);
-            hilo.put(i, lista);
-            numIt++;
-        }else{
-            lista = new ArrayList<>();
-            lista.add(cad);
-            hilo.put(i, lista);
-            numIt++;
-        }
+
+        lista = new ArrayList<String>((hilo.get(i)));
+        numIt++;
+
     }
 
     @Override
     public void proceso() {
-        if (numIt >= 5) {
-            for (Map.Entry<Integer, ArrayList<String>> it : hilo.entrySet()) {
-                System.out.println("ITERACION " + it.getKey());
-                for (String s : it.getValue())
-                    System.out.println(s);
-            }
-        }
+        for (int i = 1; i <= 5; i++)
+            System.out.println("ITERACION " + i);
     }
 
     @Override

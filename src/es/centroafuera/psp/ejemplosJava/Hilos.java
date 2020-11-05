@@ -16,7 +16,8 @@ public class Hilos extends Thread {
             for (int i = 1 ; i <= TOTAL_IT; i++) {
                 long num = (long) (Math.random() * 7000) + 1000;
                 sleep(num);
-                callback.buscarHilo("El " + getName() + " ha dormido por " + num + " milisegundos", i);
+                System.out.println("El " + getName() + " ha dormido por " + num + " milisegundos");
+                callback.buscarHilo(i);
             }
             callback.proceso();
             callback.finalizar();
