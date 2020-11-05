@@ -26,17 +26,19 @@ public class Principal implements Callback {
 
     @Override
     public void buscarHilo(int i) {
-        ArrayList<String> lista = new ArrayList<>();
+        ArrayList<Integer> lista = new ArrayList<>();
 
-        lista = new ArrayList<String>((hilo.get(i)));
+        lista = new ArrayList<Integer>((hilo.get(i)));
         numIt++;
 
     }
 
     @Override
     public void proceso() {
-        for (int i = 1; i <= 5; i++)
+        for (int i = 1; i <= 5; i++) {
             System.out.println("ITERACION " + i);
+        }
+
     }
 
     @Override
